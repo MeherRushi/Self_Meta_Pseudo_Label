@@ -94,7 +94,9 @@ We conducted experiments on three standard datasets:
 ## Training Details
 Our training procedure involves two stochastic gradient descent steps in every training epoch. In step one, we draw a batch of labeled and unlabeled data, generate pseudo labels using model predictions, and compute the gradient for the first objective function. In step two, we update the model based on semi-supervised and unsupervised loss functions. We clip the gradient norm at 0.8.
 
-After training, we fine-tune the best checkpoint on labeled data for improved accuracy. The finetuning process involves retraining the model with labeled data using stochastic gradient descent for 8,000 epochs with a fixed learning rate of 5e-6.
+
+> We are currently training this model. But we are facing issues in replicating the hyperparameters of the paper as it proposes to train the model for 8000 epochs which is very difficult to replicate the results with limited infrastructure. 
+<!-- After training, we fine-tune the best checkpoint on labeled data for improved accuracy. The finetuning process involves retraining the model with labeled data using stochastic gradient descent for 8,000 epochs with a fixed learning rate of 5e-6. -->
 
 ## Results
 While we were unable to successfully re-run the Meta Pseudo Labels experiments with the official released code and instructions, we replicated our version of Meta Pseudo Labels using PyTorch on the CIFAR-10-4K dataset.
