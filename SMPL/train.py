@@ -11,18 +11,22 @@ def train_model(model, labeled_train_loader, unlabeled_train_loader_augmented, o
     SEED = 2
     EPOCHS = 100
     BETA_ZERO = 8
+    a = torch.tensor(8,dtype=torch.float32)
+    i = torch.tensor(1,dtype=torch.float32)
 
     torch.manual_seed(SEED)
-    
     labeled_batches = iter(labeled_train_loader)
+    torch.manual_seed(SEED)
     unlabeled_batches = iter(unlabeled_train_loader)
+    torch.manual_seed(SEED)
     unlabeled_batches_augmented = iter(unlabeled_train_loader_augmented)
 
     r_seed = 2
-
+    print(device)
     for epoch_num in range(EPOCHS):
         acc = 0
         print("\n\n\n\n\nEPOCH NUMBER", epoch_num + 1, "\n\n\n\n")
+        print("Loss_1 , Loss_old, Loss_new, Loss_partial, Loss_UDA, Loss_MPL\n")
         model.train()
         loss_per_epoch_1 = 0
 

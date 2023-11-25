@@ -5,10 +5,10 @@ def get_loaders(BATCH_SIZE, labeled_dir, unlabeled_dir, test_dir, transform, sim
     """
     Function to get DataLoader instances for labeled, unlabeled, and test datasets.
     """
-    labeled_data = ImageFolder(root=labeled_dir, transform=transform)
-    unlabeled_data = ImageFolder(root=unlabeled_dir, transform=simple_transform)
-    unlabeled_data_augmented = ImageFolder(root=unlabeled_dir, transform=transform)
-    test_data = ImageFolder(root=test_dir, transform=transform)
+    labeled_data = ImageFolder(root=labeled_dir, transform=get_transform())
+    unlabeled_data = ImageFolder(root=unlabeled_dir, transform=simple_transform())
+    unlabeled_data_augmented = ImageFolder(root=unlabeled_dir, transform=get_transform())
+    test_data = ImageFolder(root=test_dir, transform=get_transform())
 
     labeled_train_loader = DataLoader(labeled_data, batch_size=BATCH_SIZE, shuffle=True)
     unlabeled_train_loader = DataLoader(unlabeled_data, batch_size=BATCH_SIZE, shuffle=True)

@@ -42,21 +42,33 @@ We structure dthe directory as follows :
 
 ### SMPL (self meta pseudo label)
 
+To run the code , just run 
+```bash
+$ python3 master.py
+```
+
 The implementation is structured as follows:
 - `data_handling.py`: Implements the creation of CIFAR-10 dataset and arrangement into proper file structure
 - `data_transformation.py`: Implements various data augmentation policies such as Unsupervised Data Augmentation, AutoAugment, and RandAugment.
 - `data_loading.py`: Functions to create the dataset and dataloader classes.
 -  `model.py`: Contains the implementation of the Wide_resnet Self Meta Pseudo Labels.
 - `train.py`: Training and evaluation functions for the SMPL model.
+- `eval.py`: Evaluate the model   
 -  `master.py` : Contains the main python script that is to be run 
 
 
 ### Colab Notebooks
 
-- **`Two_moon_exp.ipynb`** : This notebook contains our replication of the experiments regarding 2 moon dataset. To duplicate the resuluts, open in colab and Just hit the run_all(ctlr + f9) option in colab to replicate the results. We generated the datapoints randomly as mentioned in the paper. So the results may not be exactly the same but they replicate the conceptual requirement and show better performance in comparision to the other methods
+> Just hit CTRL+F9 to run the notebooks (or Run all in the Top)
 
-- **`CIFAR_10_exp.ipynb`** : This notebook contains our replication of the experiments regarding CIFAR-10 dataset.To duplicate the resuluts, open in colab and Just hit the run_all(ctlr + f9) option in colab to replicate the results.
+- **`Two_moon_exp.ipynb`** : This notebook contains our replication of the experiments regarding 2 moon dataset. We generated the datapoints randomly as mentioned in the paper. So the results may not be exactly the same but they replicate the conceptual requirement and show better performance in comparision to the other methods
+
+- **`CIFAR_10_exp.ipynb`** : This notebook contains our replication of the experiments regarding CIFAR-10 dataset.
 The major issue we faced is regarding the limitation of GPU, we only have access to the free T4 GPU from Colab. So we created a few free accounts and ran until we exhausted the GPU time and kept saving the model every 10 epochs. We managed to train the model for `72 epochs` and we got an `Test Accuracy` of `75.09%` and `Train accuracy` of `77.79%` which is better than a supervised model on 57 epochs. The paper requires us to train the model for **`8000`** epochs followed by fine-tuning which is `not` possible to replicate using the current resources at hand.
+
+### Model Weights
+
+This directory has the weights of the trained model
 
 ## Experiments
 
@@ -125,6 +137,10 @@ Our training procedure involves two stochastic gradient descent steps in every t
 > We are currently training this model. But we are facing issues in replicating the hyperparameters of the paper as it proposes to train the model for 8000 epochs which is very difficult to replicate the results with limited infrastructure. 
 <!-- After training, we fine-tune the best checkpoint on labeled data for improved accuracy. The finetuning process involves retraining the model with labeled data using stochastic gradient descent for 8,000 epochs with a fixed learning rate of 5e-6. -->
 
+We follow all the Hyperparameters given in the paper including Masking, label smoothening and Beta constant as well. The only hyperparameter that we could not replicate was training the model for 8000 epochs due to lack of computational resources.
+
+All the issues and related work is documneted in [this pdf file](/public/smpl_rr.pdf)
+
 ## Results
 While we were unable to successfully re-run the Meta Pseudo Labels experiments with the official released code and instructions, we replicated our version of Meta Pseudo Labels using PyTorch on the CIFAR-10-4K dataset.
 <!-- 
@@ -135,31 +151,8 @@ While we were unable to successfully re-run the Meta Pseudo Labels experiments w
 <!-- Refer to the paper for detailed results, comparisons, and analysis. The provided implementation details serve as a starting point for running experiments and may be further improved for ease of use and modularity. -->
 
 
-## Usage
-<!-- To train the SMPL model, follow these steps:
-1. Install dependencies (`requirements.txt`).
-2. Prepare your labeled and unlabeled datasets.
-3. Run the `train.py` script, specifying the dataset paths and hyperparameters.
-
-Example:
-```bash
-python train.py --labeled_data_path path/to/labeled/data --unlabeled_data_path path/to/unlabeled/data --epochs 50 -->
-
-> building the pipeline under progess
-
-We are running the google colab notebooks. So to see our results, just open the notebooks for reference
-All the cells can be run again using `T4 GPU` of google colab as the runtime.
-
 ## Results
-In our experiments, SMPL demonstrated improved accuracy compared to conventional supervised learning. For detailed results, please refer to the Results section in the [paper](https://arxiv.org/abs/2003.10580).
+In our experiments, SMPL demonstrated improved accuracy compared to conventional supervised learning. For detailed results, please refer to the Results on the CIFAR-10 Dataset section in the [this pdf file](/public/smpl_rr.pdf).
 
-## Dependencies
-- Python 3.x
-- Pytorch
-- Other dependencies listed in `requirements.txt`
-Install dependencies using:
-```bash
-pip install -r requirements.txt
-```
 
      
