@@ -124,7 +124,7 @@ We conducted experiments on three standard datasets:
 <!-- - **CIFAR-100-10K:** 10,000 labeled images, 40,000 unlabeled images (100 classes)
 - **SVHN-1K:** 1,000 labeled images, 603,000 unlabeled images (10 classes) -->
 
-## Training Details
+#### Training Details
 Our training procedure involves two stochastic gradient descent steps in every training epoch. In step one, we draw a batch of labeled and unlabeled data, generate pseudo labels using model predictions, and compute the gradient for the first objective function. In step two, we update the model based on semi-supervised and unsupervised loss functions. We clip the gradient norm at 0.8.
 
 
@@ -135,8 +135,8 @@ We follow all the Hyperparameters given in the paper including Masking, label sm
 
 All the issues and related work is documneted in [this pdf file](/public/smpl_rr.pdf)
 
-## Results
-While we were unable to successfully re-run the Meta Pseudo Labels experiments with the official released code and instructions, we replicated our version of Meta Pseudo Labels using PyTorch on the CIFAR-10-4K dataset.
+#### Results
+In our experiments, SMPL demonstrated improved accuracy compared to conventional supervised learning. For detailed results, please refer to the Results on the CIFAR-10 Dataset section in the [this pdf file](/public/smpl_rr.pdf).The major issue we faced is regarding the limitation of GPU, we only have access to the free T4 GPU from Colab. So we created a few free accounts and ran until we exhausted the GPU time and kept saving the model every 10 epochs. We managed to train the model for `72 epochs` and we got an `Test Accuracy` of `75.09%` and `Train accuracy` of `77.79%` which is better than a supervised model on 57 epochs. The paper requires us to train the model for **`8000`** epochs followed by fine-tuning which is `not` possible to replicate using the current resources at hand.
 <!-- 
  We achieved an accuracy of 95.87% compared to 96.11% in the original paper. Additionally, we achieved an accuracy of 95.91% using Self Meta Pseudo Labels on the CIFAR-10-4K dataset with a 19.3% reduction in VRAM usage. -->
 
