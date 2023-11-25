@@ -21,13 +21,6 @@ This repository contains the implementation of the Self Meta Pseudo Labels (SMPL
 - [License](#license)
 
 
-## Todo
-
-- [] Update the latest colab notebooks
-- [] Restructure code
-- [] Add comments
-- [] 
-
 ## Background
 Pseudo labeling is a semi-supervised approach for deep neural networks. This project builds upon the Meta Pseudo Labels method, addressing issues related to VRAM usage and the fixed teacher model during training. For a detailed background, please refer to the [original paper](https://arxiv.org/abs/2003.10580).
 
