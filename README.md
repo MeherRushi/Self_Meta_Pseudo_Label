@@ -1,5 +1,5 @@
 # Self_Meta_Pseudo_Label(SMPL)
-![Progress](https://img.shields.io/badge/Progress-35%25-yellow)
+![Progress](https://img.shields.io/badge/Progress-90%25-green)
 
 ## Overview
 This repository contains the implementation of the Self Meta Pseudo Labels (SMPL) method for semi-supervised learning. SMPL is an extension of Meta Pseudo Labels, introducing a variant that reduces VRAM usage and a novel two-step gradient update process.
