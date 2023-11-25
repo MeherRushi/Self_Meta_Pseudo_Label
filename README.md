@@ -35,8 +35,9 @@ We structure dthe directory as follows :
 
 ### SMPL (self meta pseudo label)
 
-To run the code , just run 
+To run the code, `clone the repository` and follow the below steps
 ```bash
+$ cd SMPL
 $ python3 master.py
 ```
 
